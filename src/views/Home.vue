@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-table :headers="headers" :data="users" :dataParams="params"/>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { computed, ref } from '@vue/reactivity'
+import { useStore } from 'vuex'
+import { onMounted } from '@vue/runtime-core'
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+    setup(){
+        const store = useStore()
+        const headers = ref(['Full Name','Username','E-mail', 'Actions'])
+        const params = ref(['name','username','email'])
+        const getAllUsers = () => store.dispatch('user/getAllUsers')
+        const users = computed(()=> store.state.user.users)
+        onMounted(()=> getAllUsers())
+        return {
+            headers,
+            users,
+            params
+        }
+    }
 }
 </script>

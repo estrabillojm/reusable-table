@@ -1,30 +1,39 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  *{
+    font-size:14px;
+    padding:0;
+    margin:0;
+  }
 
-#nav {
-  padding: 30px;
-}
+  .form-group{
+    @apply w-full;
+    padding:0 10px;
+    box-sizing:border-box;
+  }
+  
+  .input{
+    @apply border rounded-md px-5 py-1 w-full;
+    outline:none;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  .input::placeholder{
+    color:#ccc;
+  }
+  .input[type="date"]{
+    color:#ccc;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+    .input[type="date"]:focus{
+    color:black;
+  }
+
+  input:focus{
+    @apply border-2 border-blue-400 shadow-md;
+  }
+
+
 </style>
